@@ -130,4 +130,4 @@ No | VariableName
 
 ##References:
 
-[1] UCI HAR Dataset
+1. [UCI HAR Dataset](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones )
