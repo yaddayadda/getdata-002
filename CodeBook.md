@@ -27,7 +27,7 @@ Mag | Magnitude of the three dimenstional signals
 Here is the list of used mean and standard deviation features
 
 No | VariableName
--- | ------------
+---|-------------
 1	| SubjectID
 2	| ActivityName
 3	| tBodyAccMeanX
