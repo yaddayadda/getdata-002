@@ -1,8 +1,18 @@
 CodeBook
 ========================================================
+##Introduction
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-#Glossary of Input Data Features
+This file describes the data and its variables and informs in detail the transformations performed on the initial [The Human Activity Recognition Using Smartphones Data Set](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) using the run_analysis.R script. There is a Glossary at the start explaning the different labels/features present in the initial data set. 
+
+##Dataset Cleanup and Transformations:
+[The Human Activity Recognition Using Smartphones Data Set](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) data set consists of totally 563 features (including Activity ID and Subject ID) and total of 10299 observations (including train and test observations). The features expected to be extracted from this feature set is Mean and Standard Deviation measurements. Given there is a possiblity for ambiguity, the coding allows to have 
+
+1. mean() and std() measurements - 75 Features
+2. mean(),meanFreq() and std measurements - 88 Features
+
+This is including the SubjectID and ActivityID. By default I took the latter with 88 features. Then the ActivityID (1 to 6) is replaced by the corresponding activity description WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING in the reduced dataset. Subsequently the average of the features per SubjectID per ActivityID is calculated and written to the tidy data set. The dimensions of the final tidy data set is 180 * 88 . 180 comes from 6 activities per 30 subjects (6 * 30) . The tidy data set is written out to a file . By default to final.txt in current working directory.
+
+##Glossary of Input Data Features
 
 Variable Name | Description
 --------------|------------
@@ -117,13 +127,6 @@ No | VariableName
 87	| angleYgravityMean
 88	| angleZgravityMean
 
-##Dataset Cleanup and Transformations:
-[The Human Activity Recognition Using Smartphones Data Set](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) data set consists of totally 563 features (including Activity ID and Subject ID) and total of 10299 observations (including train and test observations). The features expected to be extracted from this feature set is Mean and Standard Deviation measurements. Given there is a possiblity for ambiguity, the coding allows to have 
-
-1. mean() and std() measurements - 75 Features
-2. mean(),meanFreq() and std measurements - 88 Features
-
-This is including the SubjectID and ActivityID. By default I took the latter with 88 features. Then the ActivityID (1 to 6) is replaced by the corresponding activity description WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING in the reduced dataset. Subsequently the average of the features per SubjectID per ActivityID is calculated and written to the tidy data set. The dimensions of the final tidy data set is 180 * 88 . 180 comes from 6 activities per 30 subjects (6 * 30) . The tidy data set is written out to a file . By default to final.txt in current working directory.
 
 ##References:
 
