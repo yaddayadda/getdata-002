@@ -1,4 +1,5 @@
 # Obtain/Download data and unzip it
+
 obtainData <- function(fileURL="NA"){
   
   if (fileURL == "NA"){
@@ -10,7 +11,7 @@ obtainData <- function(fileURL="NA"){
   
 }
 
-# Populate the data into tables with both train and test set merged
+# Populate the data into data frames
 readData <- function(pathprefix,setName,featureNames)
 {
   #Set the path prefix for the dataset type 
@@ -31,7 +32,7 @@ readData <- function(pathprefix,setName,featureNames)
 }
 
 
-# Load both train and test data
+# Load both train and test data and merge to one data set
 mergeData <- function(pathprefix)
 {
 
@@ -70,6 +71,7 @@ reduceFeatureSpace<-function(dataSet,includeMeanFreq = TRUE){
 dataSet
 }
 
+#Reads the Activity Descriptions and add the corresponding description for each activity ID
 changeActivityIdToDesc<-function(dataSet,pathprefix)
 {
   #pick the activity label mapping
@@ -88,7 +90,7 @@ changeActivityIdToDesc<-function(dataSet,pathprefix)
   dataSet
 }
 
-
+#Load all the feature labels of the data set
 readFeatureLabels<-function(pathprefix)
 {
 
@@ -101,6 +103,7 @@ readFeatureLabels<-function(pathprefix)
   featureNames$FeatureName
 }
 
+#creates a tidy data set with average of each variable per subject and per acitvity
 tidyUpData<-function(dataSet)
 {
   library(reshape2)
@@ -113,6 +116,7 @@ tidyUpData<-function(dataSet)
   tidyDataSet
 }
 
+#Main function
 main<-function(outputFileName="final.txt",includeMeanFreq=TRUE)
 {
   #0 Obtain Data
@@ -124,21 +128,33 @@ main<-function(outputFileName="final.txt",includeMeanFreq=TRUE)
   pathprefix <- paste0(dataDir,"/")
   
   # 1 Merge the training and the test sets to create one data set.
+  message("1 Merge the training and the test sets")
   dataSet <- mergeData(pathprefix)
   
   # 2 Extract only the measurements on the mean and standard deviation for each measurement. 
+  message("2 Extract only the measurements on the mean and standard deviation")
   dataSet <- reduceFeatureSpace(dataSet,includeMeanFreq)
   
   # 3  & 4 Change descriptive activity names to name the activities in the data set
   # and appropriately label the data set with descriptive activity names. 
+  message("3 Change descriptive activity names to name the activities")
+  message("4 Appropriately label the data set with descriptive activity names")
   dataSet <- changeActivityIdToDesc(dataSet,pathprefix)
   
   # 5 Creates a independent tidy data set with the average of each variable for each activity and each subject.
+  message(" Creates a independent tidy data set with the average of each variable for each activity and each subject.")
   tidyDataSet <- tidyUpData(dataSet)
   
   # 6 Write the tidy data to a file
+  message("6 Write the tidy data to a file")
   write.table(tidyDataSet,outputFileName)
   
   message(paste0("clean data is written to file ",outputFileName))
   message(paste0("Directory Path: ",getwd()))
 }
+
+print("This script will download and reshape the UCI HAR dataset")
+print("Please note: this program was implemented on Mac or Linux based operating system")
+print("If any issues on windows OS, please change the path referencing accordingly ")
+library(reshape2)
+main()
