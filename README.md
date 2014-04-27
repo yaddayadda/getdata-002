@@ -7,9 +7,9 @@ This repository is for the Getting and Cleaning Data Coursework Peer Assignment.
 
 The files summbitted of this assignment are 
 
-1.Final.txt -a tidy data set.
-2.run_analysis.R - the script performing the analysis.
-3.CodeBook.md - code book that describes the variables/features, the data, and work performed to clean up the data. 
+1. final.txt -a tidy data set.
+2. run_analysis.R - the script performing the analysis.
+3. CodeBook.md - code book that describes the variables/features, the data, and work performed to clean up the data. 
 
 
 
