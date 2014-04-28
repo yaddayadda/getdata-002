@@ -12,6 +12,15 @@ This file describes the data and its variables and informs in detail the transfo
 
 This is including the SubjectID and ActivityID. By default I took the latter with 88 features. Then the ActivityID (1 to 6) is replaced by the corresponding activity description WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING in the reduced dataset. Subsequently the average of the features per SubjectID per ActivityID is calculated and written to the tidy data set. The dimensions of the final tidy data set is 180 * 88 . 180 comes from 6 activities per 30 subjects (6 * 30) . The tidy data set is written out to a file . By default to final.txt in current working directory.
 
+The functions used are
+
+* mergeData : Merge the training and the test sets to create one data set.
+* reduceFeatureSpace : Extract only the measurements on the mean and standard deviation for each measurement. 
+* changeActivityIdToDesc : Change descriptive activity names to name the activities in the data set.
+* changeActivityIdToDesc : Appropriately label the data set with descriptive activity names.
+* tidyUpData : Creates a independent tidy data set with the average of each variable for each activity and each subject.
+* write.table : Write the tidy data to a file
+
 ##Glossary of Input Data Features
 
 Variable Name | Description
