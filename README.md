@@ -17,6 +17,10 @@ The files summbitted of this assignment are
   * Write the tidy data to a file
 3. CodeBook.md - code book that describes the variables/features, the data, and work performed to clean up the data. 
 
+## To Run the script
+
+1. Once you have cloned this git repo to your system. Go to the repo directory.
+2. source("run_analysis.R")
 
 
 
